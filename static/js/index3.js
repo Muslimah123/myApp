@@ -29,18 +29,16 @@ function handlerFunction(stream) {
 // Define the sendData function to send the audio data to the server
 function sendData(blob){
   // Use the fetch API to send a POST request to the server with the audio data in the request body
-  fetch('http://127.0.0.1:5001/speech_to_text', {
+  fetch('/speech_to_text', {
       method: 'POST',
       body: blob
     })
     // If the request is successful, get the transcription from the server response and display it
     .then(response => response.text())
     .then(transcription => {
-
-    
       //Display the transcribed text
       document.querySelector("#transcription").textContent = transcription;
-
+      // call the store_voice_transcript function to store the transcription in the database
 
     })
     // If there is an error, log the error message and display an alert to the user
@@ -48,9 +46,32 @@ function sendData(blob){
       console.error(error);
       alert("Error occurred during transcription. Please try again.");
     });
+  }
 
+
+
+
+//   function storeVoiceData(transcription) {
+//     // Send an AJAX request to the server to store the transcription in the database
+//     const xhr = new XMLHttpRequest();
+//     xhr.open('POST', '/store-voice-data', true);
+//     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     
-}
+//     xhr.onload = function () {
+//         if (xhr.readyState === 4 && xhr.status === 200) {
+//            const response = JSON.parse(xhr.responseText);
+//             if (response.status === 'success') {
+//                alert('Transcription stored successfully!');
+//             } else {
+//                alert('Failed to store transcription.');
+//             }
+//        }
+//     }; 
+
+//     xhr.send(`voice_transcript=${transcription}`);
+//     alert(transcription)
+// }
+
 
 // Add a click event listener to the record button
 record.onclick = e => {
@@ -58,7 +79,7 @@ record.onclick = e => {
   // Disable the record button to prevent multiple recordings
   record.disabled = true;
   // Change the background color of the record button to indicate recording
-  record.style.backgroundColor = "green"
+  record.style.backgroundColor = "#ffcc00"
   // Enable the stop button
   stopRecord.disabled = false;
   // Clear the audioChunks array
@@ -75,7 +96,7 @@ stopRecord.onclick = e => {
   // Disable the stop button to prevent multiple stops
   stop.disabled = true;
   // Change the background color of the record button to indicate not recording
-  record.style.backgroundColor = "red"
+  record.style.backgroundColor = "green"
   // Stop recording with the MediaRecorder object
   rec.stop();
 }

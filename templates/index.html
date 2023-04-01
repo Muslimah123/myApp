@@ -18,23 +18,21 @@
 </head>
 <body>
 <nav class="navbar   bg-gradient-primary navbar-fixed-top ">
- <div class="logo">
-    <div class="arrow-down"></div>
-  </div> 
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">
-					OurApp</a>
+          <img src="{{ url_for('static', filename='images/KasaFinTech_logo.png') }}" alt="OurApp Logo">
+				</a>
 			</div>
       
-			<ul class="nav navbar-nav">
+			<ul class="nav navbar-nav" style= "font-size: 18px;">
 				<li class="active"><a href="index.php">Home</a></li>
 				<li><a href="{{ url_for('services') }}">Services</a></li>
 				<li><a href="shop.php">Products</a></li>
 				<li><a href="{{ url_for('faqs') }}">FAQS</a></li>
                 <li><a href="{{ url_for('contact') }}">Contacts</a></li>
 			</ul>
-			<ul class="nav navbar-nav navbar-right">
+			<ul class="nav navbar-nav navbar-right" style= "font-size: 18px;">
                 <li><a href="{{ url_for('register') }}">
                     <span class="glyphicon glyphicon-user"></span>
                     Register</a></li>

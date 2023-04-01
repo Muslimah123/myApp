@@ -8,14 +8,32 @@
 </head>
 <body>
   <div class="container">
-    <h1>Record your voice</h1>
+    <h1>Instructions: Record your voice transaction</h1>
     <label for="record-btn">Record:</label>
-    <button id="record-btn">Start</button>
-    <button id="stop-btn" disabled>Stop</button>
-    <audio></audio>
+    <h2> The recorded voice should be in this format
+      <span style="font-weight: bold; font-style: italic;">"Bought item cost" or "Sold item cost" or "Capital cost"</span>
+      For example you can say Bought sugar 200 if you did a purchase or Sold sugar 20 if you did a sale of sugar
+
+      <br><span style="font-weight: bold; font-style: italic; color: red;">Note: Please adhere to this for your 
+        transaction to be successfully recorded by the system.</span><br>
+      
+
+      On the next page you have to click on a red button to start recording, The button will turn 
+      green after clicking on it to show that you are recording. After that click on stop button to stop recording.
+
+    </h2>
     <label for="recorded-text">Recorded Text:</label>
+
+    <h2> After you are done recording the trascription of your voice will be displayed to you on the text box 
+      written Trascribed Text here.
+
+      <br><span style="font-weight: bold; font-style: italic; color: green;">After you are done click on process, the system will handle the rest of your transaction storage.</span><br>
+
+    </h2>
+
+
     <div id="recorded-text"></div>
-    <button class="process-btn" id="process-btn" disabled><a href="{{ url_for('dashboard') }}">Process Text</a></button>
+    <button class="process-btn" id="process-btn" disabled><a href="{{ url_for('dashboard') }}">Proceed to Record</a></button>
   </div>
 </body>
 </html>

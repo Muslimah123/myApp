@@ -4,10 +4,16 @@
           <meta charset="utf-8">
           <title>Login Form</title>
           <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+          <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
           <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
       </head>
       <body>
           <div class="login">
+            <div style="height:100px;text-align:center">
+                <a style="display:block; width:80%; margin:auto; margin-top:30px;" href="#">
+                    <img style="width:150px; height:150px" src="{{ url_for('static', filename='images/KasaFinTech_logo.png') }}" alt="OurApp Logo">
+                </a>
+            </div>
               <h1>LOGIN</h1>
               <div class="links">
                   <a href="{{ url_for('login') }}" class="active">LOGIN</a>

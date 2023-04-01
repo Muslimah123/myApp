@@ -34,35 +34,51 @@ cursor.execute('''
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS voice_transcripts (
         id INT PRIMARY KEY AUTO_INCREMENT,
-        user_id INT,
-        transcript TEXT NOT NULL,
-        date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (user_id) REFERENCES users(id)
+        users_id INT,
+        transcription TEXT NOT NULL,
+        confidence_level float DEFAULT NULL,
+        date_created DATE DEFAULT CURRENT_DATE,
+        FOREIGN KEY (users_id) REFERENCES users(id)
     )
 ''')
 
+
+# Create the income_statement table
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS income_statement (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        users_id INT,
+        item_name TEXT,
+        amount decimal(10,2),
+        transaction_type TEXT,
+        date_created DATE DEFAULT CURRENT_DATE,
+        FOREIGN KEY (users_id) REFERENCES users(id)
+    )
+''')
+
+
 # Commit the changes
 conn.commit()
+print(conn)
+# def store_voice_transcript(user_id, transcript):
+#     with APPEND.app_context():
+#         # Connect to the database
+#         conn = mysql.connector.connect(
+#             host="localhost",
+#             user="root",
+#             database="mydatabase",
+#         )
 
-def store_voice_transcript(user_id, transcript):
-    with APPEND.app_context():
-        # Connect to the database
-        conn = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            database="mydatabase",
-        )
+#         # Create a cursor object
+#         cursor = conn.cursor()
 
-        # Create a cursor object
-        cursor = conn.cursor()
+#     # Execute the SQL query to store the voice transcript
+#     sql = "INSERT INTO voice_transcripts (user_id, transcript) VALUES (%s, %s)"
+#     val = (user_id, transcript)
+#     cursor.execute(sql, val)
 
-    # Execute the SQL query to store the voice transcript
-    sql = "INSERT INTO voice_transcripts (user_id, transcript) VALUES (%s, %s)"
-    val = (user_id, transcript)
-    cursor.execute(sql, val)
+#     # Commit the changes
+#     conn.commit()
 
-    # Commit the changes
-    conn.commit()
-
-    # Close the connection
-    conn.close()
+#     # Close the connection
+#     conn.close()

@@ -13,6 +13,27 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+        <style>
+            #submitTransactionBtn {
+              background-color: #1abc9c;
+              color: #fff;
+              border-radius: 20px;
+              padding: 10px 20px;
+              font-size: 16px;
+              margin-right: 10px;
+              cursor: pointer;
+            }
+          
+            #clearRecordingBtn {
+              background-color: #f1c40f;
+              color: #fff;
+              border-radius: 20px;
+              padding: 10px 20px;
+              font-size: 16px;
+              cursor: pointer;
+            }
+          </style>
+
     </head>
 
     <body>
@@ -145,7 +166,7 @@
 
                     <div class="nav-option option5">
                         <i class="fa fa-shopping-cart nav-img"></i>
-                        <h3> sales by product</h3>
+                        <h3> Sales by <br> product</h3>
                     </div>
 
                     <div class="nav-option option6">
@@ -167,71 +188,46 @@
             </nav>
         </div>
 
-        <table style="border:1px solid black; color: red;">
-            {% comment %} table data goes here {% endcomment %}
-        </table>
-
 
         <div class="main">
-
-            <div class="searchbar2">
-                    <input type="text"
-                        name=""
-                        id=""
-                        placeholder="Search">
-                    <div class="searchbtn">
-                        <i class="fa fa-search srchicn"></i>
+            <div class="box-container">
+                <div class="searchbar2">
+                        <input type="text"
+                            name=""
+                            id=""
+                            placeholder="Search">
+                        <div class="searchbtn">
+                            <i class="fa fa-search srchicn"></i>
+                        </div>
+                </div>
+                <div class="text" id="recording">
+                    <p style="margin-bottom:5px;">Record your voice and click on stop when finish.</p>
+                    <p>
+                        <button id="record">Click Here to Record</button>
+                        <button id="stopRecord" disabled>Stop Record</button>
+                    </p>
+                    <div id="textspace" style="background-color: lightblue; text-align:center;">
+                        <span id="transcription" style="background-color: lightblue; font-size: 14px; font-weight: 700;">Transcribed Text Here</span>
                     </div>
-            </div>
-
-            <p>Record your voice and cick on stop when finish.</p>
-
-            <div  class="text" id="recording">
-
-                <p>
-                    <button id="record">Click Here to Record</button>
-                    <button id="stopRecord" disabled >StopRecord</button>
-                </p>
-
-                    <div id= "textspace" style = "background-color: powderblue; text-align:center;">
-                    <span id="transcription" style ="background-color: powderblue; font-size: 14px; font-weight: 700;">Transcribed Text Here</span>
-                    </div>
-
-                <p>
-                    <audio id ="recordedAudio"></audio>
-                </p>
-
-                <br>
-            
-                <input type ="submit" id="processtranscription" onclick="approveTranscription()" value ="Process" class ="submit-btn">
-        
+                    <p>
+                        <audio id="recordedAudio"></audio>
+                    </p>
+                    
+                </div>
             </div>
         </div>
-
-        <script>
-            var span = document.getElementById("transcription");
-            var td = document.getElementById("t1");
-
-            function approveTranscription(td){
-                const par = document.createElement('p');
-                const text = document.createTextNode(td);
-                par.appendChild(text);
-
-                trasc.appendChild(paragraph);
-
-                //td.innerHTML = span.textContent;
-            }
-
-            const td = 'Thisss';
-            approveTranscription(td);
-
-
-        </script>
             
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="{{ url_for('static', filename='js/table.js') }}"></script>
         <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
         <script src="{{ url_for('static', filename='js/index3.js') }}"></script>
+        
+        <script>
+           function transApprov(event){
+                console.log();
+                window.location.href = "transcripts.html";
+            }
+        </script>
+
     </body>
 
 </html>

@@ -8,7 +8,7 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 40px;
-    background-color: #fff;
+    background-color: #fafaff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
   
@@ -16,9 +16,18 @@ body {
     font-size: 32px;
     margin-bottom: 20px;
   }
+
+  h2 {
+    font-size: 25px;
+    margin-bottom: 20px; 
+  }
+
+
   label {
     display: block;
     margin-bottom: 10px;
+    font-size: 32px;
+    color: #007bff;
   }
   audio {
     display: block;

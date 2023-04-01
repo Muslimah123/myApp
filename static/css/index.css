@@ -14,16 +14,28 @@ body {
   }
   
   .bg-gradient-primary {
-    background: linear-gradient(to right, #007bff, #0062cc); /* adds a primary gradient background color */
+    /* background: linear-gradient(to right, #007bff, #0062cc); adds a primary gradient background color */
     border: none; /* removes the border around the navbar */
+    background:#002f62;
+  
   }
   
   .navbar {
     margin-bottom: 0; /* removes any margin at the bottom of the navbar */
+    height:100px;
   }
   
   .navbar-brand {
     color: #fff; /* sets the color of the brand text to white */
+    
+  }
+
+  .navbar-brand img {
+    height: 150px; /* adjust the height of the logo as needed */
+    margin-right: 10px; /* add some space between the logo and the text */
+    width: 150px;
+    position: relative;
+    margin-top:-31px;
   }
   
   .navbar-nav > li > a {
@@ -33,7 +45,7 @@ body {
   .navbar-nav > li > a:hover,
   .navbar-nav > li > a:focus {
     color: #fff; /* sets the color of the links in the navbar to white when hovered or focused */
-    background-color: #0062cc; /* adds a darker blue background color to the links when hovered or focused */
+    background-color: #004289; /* adds a darker blue background color to the links when hovered or focused */
   }
   
   .navbar-right > li > a {
@@ -43,12 +55,16 @@ body {
   .navbar-right > li > a:hover,
   .navbar-right > li > a:focus {
     color: #fff; /* sets the color of the right-hand links in the navbar to white when hovered or focused */
-    background-color: #0056b3; /* adds a darker blue background color to the right-hand links when hovered or focused */
+    background-color: #004289; /* adds a darker blue background color to the right-hand links when hovered or focused */
   }
   
   .logo {
     float: left; /* makes the logo float to the left side of the navbar */
     margin-right: 20px; /* adds some spacing to the right of the logo */
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
   }
   
   .arrow-down {
@@ -80,7 +96,7 @@ body {
     top: 0px;
     height: 300px;
     z-index: -1;
-    filter: drop-shadow(0 3rem 0.05rem #bfd8ff);
+    filter: drop-shadow(0 3rem 0.05rem #004c9d);
   }
   @media (min-width: 768px) {
     .banner .banner-image {
@@ -117,7 +133,7 @@ body {
     border: 0;
     border-radius: 50px;
     padding: 0.75rem 2.75rem;
-    background: #4b71ff;
+    background: #002f62;
     color: #ffffff;
     box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.25);
     cursor: pointer;
@@ -191,7 +207,7 @@ body {
   } */
   
   #footer{
-    background: linear-gradient(to right, #007bff, #0062cc);
+    background: linear-gradient(to right, #002f62, #003976);
     padding: 0 0 30px 0;
     color: #fff;
     font-size: 14px;
@@ -199,7 +215,7 @@ body {
   }
   #footer .footer-newsletter{
     padding: 50px 0;
-    background: linear-gradient(to right, #007bff, #0062cc);
+    background: linear-gradient(to right, #002f62, #003976);
   }
   #footer .footer-newsletter h4{
     font-size: 24px;
@@ -230,16 +246,16 @@ body {
     font-size: 16px;
     padding: 0 30px;
     margin: 3px;
-    background: linear-gradient(to right, #007bff, #0062cc);
+    background: linear-gradient(to right, #0055b1, #005fc4);
     color: #fff;
     transition: 0.3s;
     border-radius: 50px
   }
   #footer .footer-newsletter form input[type="submit"]:hover{
-    background: #8f99d1;
+    background: #005fc4;
   }
   #footer .footer-top{
-    background: #8c9ae6;
+    background: #002f62;
     border-top: 1px solid #00106a;
     border-bottom: 1px solid #00106a;
     padding: 60px 0 30px 0
