@@ -1,5 +1,5 @@
 #record {
-    background-color: blue; /* Green */
+    background-color: blue; /* blue */
     border-width: medium;
     border-color: black;
     color: white;
@@ -18,7 +18,7 @@
     position: relative;
 }
 #stopRecord {
-  background-color: red; /* Green */
+  background-color: red; /* red */
   border-width: medium;
   border-color: black;
   color: white;
@@ -37,8 +37,9 @@
   position: relative;
 }
 h2 {
-    left: 100px;
+    left: 30px;
     position: relative;
+    margin-bottom: 30px;
 }
 #recordedAudio {
   left: 100px;

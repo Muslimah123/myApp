@@ -1,44 +1,45 @@
 
+<!--This page displays the manual for transaction recording-->
 <!DOCTYPE html>
 <html>
-<head>
-  <title>KasaFinTech/Record</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/KasaFinTech_logo.png') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/record.css') }}">
-  <script src="{{ url_for('static', filename='record.js') }}"></script>
-</head>
-<body>
-  <div class="container">
-    <h1>Instructions: Record your voice transaction</h1>
-    <label for="record-btn">Record:</label>
-    <h2> The recorded voice should be in this format
-      <span style="font-weight: bold; font-style: italic;">"Bought item cost" or "Sold item cost"</span>
-      For example you can say "Bought sugar 200" if you did a purchase or "Sold sugar 200" if you did a sale of sugar
-      Your purchases are saved as your expenses as they are cost you incurr and your sales are the revenue generated
+  <head>
+    <title>KasaFinTech/Record</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/KasaFinTech_logo.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/record.css') }}">
+    <script src="{{ url_for('static', filename='record.js') }}"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Instructions: Record your voice transaction</h1>
+      <label for="record-btn">Record:</label>
+      <h2> The recorded voice should be in this format
+        <span style="font-weight: bold; font-style: italic;">"Bought item cost" or "Sold item cost"</span>
+        For example you can say "Bought sugar 200" if you did a purchase or "Sold sugar 200" if you did a sale of sugar
+        Your purchases are saved as your expenses as they are cost you incurr and your sales are the revenue generated
 
-      <br><span style="font-weight: bold; font-style: italic; color: red;">Note: Please adhere to this format for your 
-      transaction to be successfully recorded in the system.</span><br>
-      
-      On the next page you have to click on a red button to start recording, The button will turn 
-      amber after clicking on it to show that you are recording. After that click on stop button to stop recording.
+        <br><span style="font-weight: bold; font-style: italic; color: red;">Note: Please adhere to this format for your 
+        transaction to be successfully recorded in the system.</span><br>
+        
+        On the next page you have to click on a red button to start recording, The button will turn 
+        amber after clicking on it to show that you are recording. After that click on stop button to stop recording.
 
-    </h2>
+      </h2>
 
-    <label for="recorded-text">Recorded Text:</label>
+      <label for="recorded-text">Recorded Text:</label>
 
-    <h2> After you are done recording the trascription of your voice will be displayed to you on the text box 
-      written "Trascribed Text here."
+      <h2> After you are done recording the trascription of your voice will be displayed to you on the text box 
+        written "Trascribed Text here."
 
-  
-      <br><span style="font-weight: bold; font-style: italic; color: dark blue;">The system will handle the rest of your transaction storage for you.</span><br>
-      You can now check the dashboard to see the changes based on your recorded transaction. You can decide to download the report for you expense, revenue
-      or income statement for a specific date (s) of your choice. It is that easy. Enjoy.
+    
+        <br><span style="font-weight: bold; font-style: italic; color: dark blue;">The system will handle the rest of your transaction storage for you.</span><br>
+        You can now check the dashboard to see the changes based on your recorded transaction. You can decide to download the report for you expense, revenue
+        or income statement for a specific date (s) of your choice. It is that easy. Enjoy.
 
-    </h2>
+      </h2>
 
 
-    <div id="recorded-text"></div>
-    <button class="process-btn" id="process-btn" disabled><a href="{{ url_for('dashboard') }}">Proceed to Record</a></button>
-  </div>
-</body>
+      <div id="recorded-text"></div>
+      <button class="process-btn" id="process-btn" disabled><a href="{{ url_for('dashboard') }}">Proceed to Record</a></button>
+    </div>
+  </body>
 </html>

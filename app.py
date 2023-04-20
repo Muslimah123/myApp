@@ -30,11 +30,9 @@ from decimal import Decimal
 from flask import send_file
 from flask import jsonify
 import Levenshtein
+from Levenshtein import distance
 from datetime import datetime, timedelta
 import plotly.graph_objs as go
-
-
-
 
 
 app = Flask(__name__)
@@ -52,27 +50,6 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = key_path
 mysql = MySQL(app)
 
 bcrypt = Bcrypt(app)
-
-
-#This function retrieve all the trascriptions stored in the database and display it in the transcripts page
-@app.route('/transcripts')
-def transcripts():
-    if 'loggedin' in session:
-        # Retrieve user's name from session
-        username = session['username']
-        msg = request.args.get('msg')
-        users_id = session['id']
-        
-        # Retrieve the transcriptions from the database
-        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute("SELECT transcription, date_created FROM voice_transcripts WHERE users_id=%s", (users_id,))
-        transcripts = cursor.fetchall()
-        print(transcripts)
-        return render_template('transcripts.html', username=username,msg=msg, transcripts=transcripts)
-    else:
-        return redirect(url_for('login'))
-   
-    
 
     
 #This is for preprocessing of the trascription from the user for analysis
@@ -732,7 +709,8 @@ def record():
         return render_template('record.html', username=session['username'])
     return redirect(url_for('login'))
 
-   
+
+
 #rendering the dasboard     
 @app.route('/dashboard')
 def dashboard():
@@ -747,38 +725,58 @@ def dashboard():
         cursor.execute("SELECT SUM(amount) as total_sales FROM income_statement WHERE users_id=%s AND transaction_type='sold'", (session['id'],))
         total_sales_row = cursor.fetchone()
         total_sales = total_sales_row['total_sales'] if total_sales_row['total_sales'] is not None else 0.0
+        
     
-    # Retrieve the total expenses from the expenses dashboard
+      # Retrieve the total expenses from the expenses dashboard
         cursor.execute("SELECT SUM(amount) as total_expenses FROM income_statement WHERE users_id=%s AND transaction_type='bought'", (session['id'],))
         total_expenses_row = cursor.fetchone()
         total_expenses = total_expenses_row['total_expenses'] if total_expenses_row['total_expenses'] is not None else 0.0
     
-    # Calculate the total profit
+        # Calculate the total profit
         total_profit = float(total_sales) - float(total_expenses)
         
-        # Retrieve the top selling products
-         # Query the database for the top-selling products or services
+        
+        # Retrieve the data for the pie chart
+        cursor.execute("SELECT item_name, COUNT(*) as total_purchases FROM income_statement WHERE users_id=%s AND transaction_type='sold' GROUP BY item_name ORDER BY total_purchases DESC LIMIT 5", (session['id'],))
+        purchases_data = cursor.fetchall()
+        
+        # Retrieve the revenue data from the database
+        cursor.execute("SELECT DATE(date_created) as date, SUM(amount) as total_sales FROM income_statement WHERE users_id=%s AND transaction_type='sold' GROUP BY DATE(date_created)", (session['id'],))
+        revenue_data = cursor.fetchall()
+        data = []
+        for row in revenue_data:
+            
+            data.append({'date': row['date'], 'total_sales': row['total_sales']})
+
+
+        cursor.execute("SELECT SUM(amount) as total_sales FROM income_statement WHERE users_id=%s AND transaction_type='sold'", (session['id'],))
+        revenue_data = cursor.fetchall()
         # Query the database for the top-selling product
         cursor.execute("SELECT item_name FROM income_statement WHERE users_id = %s AND transaction_type='sold' GROUP BY item_name ORDER BY COUNT(*) DESC LIMIT 1", (session['id'],))
         top_selling_products = cursor.fetchone()
        
+        cursor.execute("SELECT item_name FROM income_statement WHERE users_id = %s AND transaction_type='bought' GROUP BY item_name ORDER BY COUNT(*) DESC LIMIT 1", (session['id'],))
+        top_purchased_products = cursor.fetchone()
 
-# Retrieve the name of the top-selling product
+        # Retrieve the name of the top-selling product
         if top_selling_products is not None:
            
              top_selling_product_name = top_selling_products['item_name']
         else:
              top_selling_product_name = "N/A"
-
-
+             
        
-
-        return render_template('dashboard.html', username=username, msg=msg, total_sales=total_sales, total_expenses=total_expenses, total_profit=total_profit,top_selling_product_name=top_selling_product_name)
-
-
+       # Retrieve the name of the top-purchased product
+        if top_purchased_products is not None:
+           
+            top_purchased_product_name = top_purchased_products['item_name']
+        else:
+             top_purchased_product_name = "N/A"
+        
+        return render_template('dashboard.html', data=data, revenue_data=revenue_data, username=username, msg=msg, total_sales=total_sales, total_expenses=total_expenses, total_profit=total_profit,purchases_data=purchases_data,top_selling_product_name=top_selling_product_name,top_purchased_product_name=top_purchased_product_name)
     else:
         return redirect(url_for('login'))
-
+    
 
 #renders the services page from the landing page
 @app.route('/services')
@@ -841,5 +839,5 @@ def update_profile():
 
 if __name__ == '__main__': 
     app.run(port = 5000)
-    # app.run(debug=True, host='0.0.0.0', port=5000)
+   
     app.run(debug=True)
