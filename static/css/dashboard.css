@@ -111,8 +111,7 @@ top: 8px;
     margin-bottom: 20px;
   }
   
-  
-  
+ 
   /* Center the chart within its container */
   #myChart {
     display: block;
@@ -180,13 +179,6 @@ top: 8px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   }
   
-  /* .circle {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    background-color: #007bff;
-    margin-right: 20px;
-  } */
   
    .fa-envelope {
     font-size: 24px;
@@ -586,8 +578,6 @@ letter-spacing: 1px;
   }
  
 
-
-
 a {
 	text-decoration: none;
 	color: black;
@@ -595,7 +585,6 @@ a {
 
 
   /* Style for the table */
-
 #t1 {
   border-collapse: collapse;
   width: 100%;
@@ -633,25 +622,6 @@ a {
   width: 100%;
 } 
 
-/* Style for the content */
-/* .content {
-  padding: 18px;
-  display: none;
-  overflow: hidden;
-  background-color: #f1f1f1;
-} */
-
-/* .nav-upper-options .nav-option .fa {
-  font-size: 20px; 
-  line-height: 40px; 
-  padding-right: 10px; 
-} */
-
-/* .nav-upper-options .nav-option img {
-  max-height: 100px;
-  max-width: 100px;
-} */
-
 .nav-img {
   max-width: 75%;
   height: auto;
@@ -661,7 +631,6 @@ a {
   text-align: right;
   margin-right: 5px;
 }
-
 
 
 /*providing css to the transaction tables*/
@@ -704,7 +673,7 @@ th {
   margin-right: 10px;
 }
 
-/*Prviding styles to the download button*/
+/*Providing styles to the download button*/
 
 .download-link {
   display: inline-block;

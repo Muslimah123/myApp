@@ -1,3 +1,5 @@
+
+<!--This page communcates with index3.css and index3.js to enable the voice recording-->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -32,7 +34,7 @@
               font-size: 16px;
               cursor: pointer;
             }
-          </style>
+        </style>
 
     </head>
 
@@ -46,20 +48,13 @@
                 <i class="fa fa-bars menuicn" id="menuicn"></i>
             </div>
 
-           <!-- <div class="searchbar">
-                <input type="text"
-                placeholder="Search">
-                <div class="searchbtn">
-                <i class="fa fa-search srchicn"></i>
-                </div>
-            </div>-->
 
             <!--This part is for the microphone recording-->
             <div>
-                <span style="font-size: 30px; color: blue;">
+                <span style="font-size: 33px; color: #003976;">
                 <i class="fa fa-microphone"></i>
                 </span>
-                <span style="font-size: 25px; font-weight: bold; color: green;">
+                <span style="font-size: 28px; font-weight: bold; color: green;">
                 <a href="{{ url_for('recordingpage') }}">Record your Transaction</a>
                 </span>
             </div>
@@ -166,17 +161,17 @@
 
                     <div class="nav-option option5">
                         <i class="fa fa-shopping-cart nav-img"></i>
-                        <a href=" {{url_for('sales_by_products')}}"><h3> Sales by products </h3></a>
+                        <a href=" {{url_for('sales_by_products')}}"><h3> Sales by <br> products </h3></a>
                     </div>
 
                     <div class="nav-option option6">
                         <i class="fa fa-list-alt nav-img"></i>
-                        <a href=" {{url_for('expenses_by_category')}}"> <h3> Expenses by category</h3></a>
+                        <a href=" {{url_for('expenses_by_category')}}"> <h3> Expenses by Product</h3></a>
                     </div>
 
                     <div class="nav-option option7">
                         <i class="fas fa-file-alt  nav-img"></i>
-                        <a href="{{ url_for('income_statement') }}"><h3> Report</h3></a>
+                        <a href="{{ url_for('income_statement') }}"><h3> Income Statement<br> Report</h3></a>
                     </div>
 
                     <div class="nav-option logout">
@@ -187,33 +182,26 @@
                 </div>
             </nav>
         </div>
-
-
-        <div class="main">
+        
+        <!--This is for recording part of the code-->
+        <div class="main"> <!--style="background-color: #f0f8ff;"-->
             <div class="box-container">
-                <div class="searchbar2">
-                        <input type="text"
-                            name=""
-                            id=""
-                            placeholder="Search">
-                        <div class="searchbtn">
-                            <i class="fa fa-search srchicn"></i>
-                        </div>
+              <div class="text" id="recording">
+                <h2>Transaction: Voice Recorder</h2>
+                <p>Record your voice and click on stop when finished:</p>
+                <div>
+                    <button id="record" style="display:inline-block; margin-right:10px;"> Record Here</button>
+                    <button id="stopRecord" style="display:inline-block;" disabled>Stop Record</button>
                 </div>
-                <div class="text" id="recording">
-                    <p style="margin-bottom:5px;">Record your voice and click on stop when finish.</p>
-                    <p>
-                        <button id="record">Click Here to Record</button>
-                        <button id="stopRecord" disabled>Stop Record</button>
-                    </p>
-                    <div id="textspace" style="background-color: lightblue; text-align:center;">
-                        <span id="transcription" style="background-color: lightblue; font-size: 14px; font-weight: 700;">Transcribed Text Here</span>
-                    </div>
-                    <p>
-                        <audio id="recordedAudio"></audio>
-                    </p>
-                    
+
+                <div id="textspace" style="background-color: #F2F2F2; text-align: center; height: 100px; padding: 10px; overflow-y: auto; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);">
+                  <span id="transcription" style="font-size: 14px; font-weight: 700;">Transcribed Text Here</span>
                 </div>
+                
+                <p style="margin-top: 20px;">
+                  <audio id="recordedAudio"></audio>
+                </p>
+              </div>
             </div>
         </div>
             

@@ -1,73 +1,87 @@
+<!--This is for frequently asked questions-->
 <!DOCTYPE html>
 <html>
-<head>
-	<title>KasaFinTech/FAQs</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/faqs.css') }}">
-	<link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/KasaFinTech_logo.png') }}">
-</head>
-<body>
-	<h1 style="color: #002f62;">Frequently Asked Questions</h1>
-	<h3 style="color: #002f62;">Click on the question to view the answer</h3>
-	<div class="accordion">
-		<div class="accordion-item">
-			<div class="accordion-item-header">What is the financial management system?</div>
-			<div class="accordion-item-body">
-				The financial management system is a voice-enabled platform that helps you manage your personal finances. You can track your expenses, monitor your investments, check your account balances, and view your transaction history using voice commands.
+	<head>
+		<title>KasaFinTech/FAQs</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/faqs.css') }}">
+		<link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/KasaFinTech_logo.png') }}">
+	</head>
+
+	<body>
+		<h1 style="color: #002f62;">Frequently Asked Questions</h1>
+		<h3 style="color: #002f62;">Click on the question to view the answer</h3>
+
+		<!--This is responsible for the display of the questions and answers that are frequently asked-->
+		<div class="accordion">
+			<div class="accordion-item">
+				<div class="accordion-item-header">What is the financial management system?</div>
+				<div class="accordion-item-body">
+					The financial management system is a voice-enabled platform that helps you manage your personal finances. You can track your expenses, monitor your investments, check your account balances, and view your transaction history using voice commands.
+				</div>
 			</div>
-		</div>
-		<div class="accordion-item">
-			<div class="accordion-item-header">How does the system work?</div>
-			<div class="accordion-item-body">
-				The system uses natural language processing (NLP) technology to interpret your voice commands. You can add expenses, income, investments, and check your account balances by speaking to the system. The system will then process your command and perform the requested action.
+
+			<div class="accordion-item">
+				<div class="accordion-item-header">How does the system work?</div>
+				<div class="accordion-item-body">
+					The system uses natural language processing (NLP) technology to interpret your voice commands. You can add expenses, income, investments, and check your account balances by speaking to the system. The system will then process your command and perform the requested action.
+				</div>
 			</div>
-		</div>
-		<div class="accordion-item">
-			<div class="accordion-item-header">What are the requirements to use the system?</div>
-			<div class="accordion-item-body">
-				You need to have a linked bank account or credit card account to use the system. For investment tracking, you need to have a linked investment account. You also need a device that supports voice commands and an internet connection.
+
+			<div class="accordion-item">
+				<div class="accordion-item-header">What are the requirements to use the system?</div>
+				<div class="accordion-item-body">
+					You need to have a linked bank account or credit card account to use the system. For investment tracking, you need to have a linked investment account. You also need a device that supports voice commands and an internet connection.
+				</div>
 			</div>
-		</div>
-		<div class="accordion-item">
-			<div class="accordion-item-header">Is my financial data secure?</div>
-			<div class="accordion-item-body">
-				Yes, your financial data is encrypted and stored securely on our servers. We use the latest security technology to protect your data and ensure that it is only accessible to you.
+
+			<div class="accordion-item">
+				<div class="accordion-item-header">Is my financial data secure?</div>
+				<div class="accordion-item-body">
+					Yes, your financial data is encrypted and stored securely on our servers. We use the latest security technology to protect your data and ensure that it is only accessible to you.
+				</div>
 			</div>
-		</div>
-		<div class="accordion-item">
-			<div class="accordion-item-header">What are the benefits of using a voice-enabled financial management system?</div>
-			<div class="accordion-item-body">
-			Using a voice-enabled financial management system can save you time and effort in managing your finances. You can easily add expenses and monitor your account balances without having to manually enter information. It also provides a more natural and intuitive user experience.
+
+			<div class="accordion-item">
+				<div class="accordion-item-header">What are the benefits of using a voice-enabled financial management system?</div>
+				<div class="accordion-item-body">
+				Using a voice-enabled financial management system can save you time and effort in managing your finances. You can easily add expenses and monitor your account balances without having to manually enter information. It also provides a more natural and intuitive user experience.
+				</div>
 			</div>
-		</div>
-		<div class="accordion-item">
-			<div class="accordion-item-header">Can I link multiple bank accounts to a voice-enabled financial management system?
-</div>
-			<div class="accordion-item-body">
-			Yes, you can link multiple bank accounts and credit cards to the system. This allows you to manage all your finances in one place.
+
+			<div class="accordion-item">
+				<div class="accordion-item-header">Can I link multiple bank accounts to a voice-enabled financial management system?
+				</div>
+
+				<div class="accordion-item-body">
+					Yes, you can link multiple bank accounts and credit cards to the system. This allows you to manage all your finances in one place.
+				</div>
 			</div>
-		</div>
-		<div class="accordion-item">
-			<div class="accordion-item-header">What happens if I lose my device that supports voice commands?
-</div>
-			<div class="accordion-item-body">
-			Your financial data is securely stored on our servers, so you can access it from any device with an internet connection. However, for security reasons, you should immediately notify us if your device is lost or stolen.
+
+			<div class="accordion-item">
+				<div class="accordion-item-header">What happens if I lose my device that supports voice commands?
+	            </div>
+
+				<div class="accordion-item-body">
+				Your financial data is securely stored on our servers, so you can access it from any device with an internet connection. However, for security reasons, you should immediately notify us if your device is lost or stolen.
+				</div>
 			</div>
-		</div>
-		<div class="accordion-item">
-			<div class="accordion-item-header">Is there a limit to the number of voice commands I can use?
-</div>
-			<div class="accordion-item-body">
-			There is no limit to the number of voice commands you can use. You can use the system as much as you need to manage your finances.
+
+			<div class="accordion-item">
+				<div class="accordion-item-header">Is there a limit to the number of voice commands I can use?
+	        	</div>
+				<div class="accordion-item-body">
+				There is no limit to the number of voice commands you can use. You can use the system as much as you need to manage your finances.
+				</div>
 			</div>
-		</div>
-		<div class="accordion-item">
-			<div class="accordion-item-header">How can I contact support?</div>
-			<div class="accordion-item-body">
-				You can contact support by emailing support@financialmanagementsystem.com or by calling our toll-free number at 1-800-123-4567.Our team will assist you in resolving any issues you may have.
+
+			<div class="accordion-item">
+				<div class="accordion-item-header">How can I contact support?</div>
+				<div class="accordion-item-body">
+					You can contact support by emailing support@financialmanagementsystem.com or by calling our toll-free number at 1-800-123-4567.Our team will assist you in resolving any issues you may have.
+				</div>
 			</div>
+			
 		</div>
-		
-	</div>
-    <script src="{{ url_for('static', filename='js/faqs.js') }}"></script>
-</body>
+		<script src="{{ url_for('static', filename='js/faqs.js') }}"></script>
+	</body>
 </html>

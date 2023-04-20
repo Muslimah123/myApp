@@ -1,8 +1,7 @@
+<!--This will display all the products sold by the user in form of table-->
 <!DOCTYPE html>
 <html lang="en">
     <title>
-
-
     </title>
     <head>
         <meta charset="UTF-8">
@@ -14,11 +13,6 @@
         <link rel="stylesheet" href="{{ url_for('static', filename="css/index3.css") }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/revenue_dasboard.css') }}">
-
-        <!-- delete when done -->
-        <link rel="stylesheet" href="../static/css/dashboard.css">
-        <link rel="stylesheet" href="../static/css/index3.css">
-        <link rel="stylesheet" href="../static/css/responsive.css">
 
         <!--<link rel="stylesheet" href="{{ url_for('static', filename='css/transripts.css') }}">-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -38,20 +32,12 @@
                 <i class="fa fa-bars menuicn" id="menuicn"></i>
             </div>
 
-            <!--<div class="searchbar">
-                <input type="text"
-                placeholder="Search">
-                <div class="searchbtn">
-                <i class="fa fa-search srchicn"></i>
-                </div>
-            </div>-->
-
             <!--This part is for the microphone recording-->
             <div>
-                <span style="font-size: 30px; color: blue;">
+                <span style="font-size: 33px; color: #003976;">
                 <i class="fa fa-microphone"></i>
                 </span>
-                <span style="font-size: 25px; font-weight: bold; color: green;">
+                <span style="font-size: 28px; font-weight: bold; color: green;">
                 <a href="{{ url_for('recordingpage') }}">Record your Transaction</a>
                 </span>
             </div>
@@ -131,7 +117,8 @@
 
             </script>
         </header>
-    
+        
+        <!--This responsible for the dashboard left side navigation content-->
         <div class="main-container">
             <div class="navcontainer">
                 <nav class="nav">
@@ -159,17 +146,17 @@
 
                         <div class="nav-option option5">
                             <i class="fa fa-shopping-cart nav-img"></i>
-                            <a href=" {{url_for('sales_by_products')}}"><h3> Sales by products </h3></a>
+                            <a href=" {{url_for('sales_by_products')}}"><h3> Sales by <br> products </h3></a>
                         </div>
 
                         <div class="nav-option option6">
                             <i class="fa fa-list-alt nav-img"></i>
-                            <a href=" {{url_for('expenses_by_category')}}"> <h3> Expenses by category</h3></a>
+                            <a href=" {{url_for('expenses_by_category')}}"> <h3> Expenses by Product</h3></a>
                         </div>
 
                         <div class="nav-option option7">
                             <i class="fas fa-file-alt  nav-img"></i>
-                            <a href="{{ url_for('income_statement') }}"><h3> Report</h3></a>
+                            <a href="{{ url_for('income_statement') }}"><h3> Income Statement<br> Report</h3></a>
                         </div>
 
                         <div class="nav-option logout">
@@ -180,63 +167,66 @@
                     </div>
                 </nav>
             </div>
+            
+            <!--This container is responsible for the sales table diplayed and to be downloaded on the dashboard-->
             <div class="main">
                 <div class="box-container">
                     <div class="rev-report">
                       {% block content %}
-                      <h2>Revenue Dashboard</h2>
-                      <form method="POST" action="{{ url_for('revenue_dashboard') }}">
-                        <div class="date-selection">
-                          <label for="start_date">Start Date:</label>
-                          <div class="date-picker">
-                            <input type="date" name="start_date" id="start_date" value="{{ start_date }}" required>
-                          </div>
-                          <label for="end_date">End Date (optional):</label>
-                          <div class="date-picker">
-                            <input type="date" name="end_date" id="end_date" value="{{ end_date }}">
-                          </div>
+                        <h2>Revenue Dashboard</h2>
+                        <form method="POST" action="{{ url_for('revenue_dashboard') }}">
+                            <div class="date-selection">
+                            <label for="start_date">Start Date:</label>
+                            <div class="date-picker">
+                                <input type="date" name="start_date" id="start_date" value="{{ start_date }}" required>
+                            </div>
+                            <label for="end_date">End Date (optional):</label>
+                            <div class="date-picker">
+                                <input type="date" name="end_date" id="end_date" value="{{ end_date }}">
+                            </div>
+                            </div>
+                            <input type="submit" value="Submit" class="submit-btn">
+                        </form>
+                    
+                        <div class="table-container">
+                            <table id="sales-table">
+                            <thead>
+                                <tr>
+                                <th>Item Name</th>
+                                <th>Total Sales</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for sale in sales_data %}
+                                <tr>
+                                <td>{{ sale.item_name }}</td>
+                                <td>{{ sale.total_sales }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            </table>
                         </div>
-                        <input type="submit" value="Submit" class="submit-btn">
-                      </form>
-                  
-                      <div class="table-container">
-                        <table id="sales-table">
-                          <thead>
-                            <tr>
-                              <th>Item Name</th>
-                              <th>Total Sales</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {% for sale in sales_data %}
-                            <tr>
-                              <td>{{ sale.item_name }}</td>
-                              <td>{{ sale.total_sales }}</td>
-                            </tr>
-                            {% endfor %}
-                          </tbody>
-                        </table>
-                      </div>
-                  
-                      <h3>Total Sales: {{total_sales}}</h3>
-                  
-                      <form method="POST" action="{{ url_for('sales_report') }}" id="download-pdf-form">
-                        <input type="hidden" name="start_date" value="{{ start_date }}">
-                        <input type="hidden" name="end_date" value="{{ end_date }}">
-                        <a href="#" onclick="document.getElementById('download-pdf-form').submit()" class="download-link">
-                            <i class="fas fa-download"></i> Download PDF
-                          </a>
-                      </form>
-                  
-                      <script>
-                        // Set the date fields in the "Download PDF" form to the same values as the ones passed to the revenue_dashboard view
-                        document.getElementById('download-pdf-form').start_date.value = '{{ start_date }}';
-                        document.getElementById('download-pdf-form').end_date.value = '{{ end_date }}';
-                      </script>
-                  
-                      {% endblock %}
-                    </div>
-                  </div>
+                    
+                        <h3>Total Sales: {{total_sales}}</h3>
+                    
+                        <form method="POST" action="{{ url_for('sales_report') }}" id="download-pdf-form">
+                            <input type="hidden" name="start_date" value="{{ start_date }}">
+                            <input type="hidden" name="end_date" value="{{ end_date }}">
+                            <a href="#" onclick="document.getElementById('download-pdf-form').submit()" class="download-link">
+                                <i class="fas fa-download"></i> Download PDF
+                            </a>
+                        </form>
+                    
+                        <script>
+                            // Set the date fields in the "Download PDF" form to the same values as the ones passed to the revenue_dashboard view
+                            document.getElementById('download-pdf-form').start_date.value = '{{ start_date }}';
+                            document.getElementById('download-pdf-form').end_date.value = '{{ end_date }}';
+                        </script>
+                    
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="{{ url_for('static', filename='js/table.js') }}"></script>

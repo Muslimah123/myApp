@@ -1,3 +1,5 @@
+
+<!--This is the registration of the user in the system-->
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,6 +9,7 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     </head>
+    
     <body>
         <div class="register">
             <div style="height:100px;text-align:center">
@@ -16,8 +19,8 @@
             </div>
             <h1>REGISTER</h1>
             <div class="links">
-                <a href="{{ url_for('login') }}">Login</a>
-                <a href="{{ url_for('register') }}" class="active">Register</a>
+                <a href="{{ url_for('login') }}">LOGIN</a>
+                <a href="{{ url_for('register') }}" class="active">REGISTER</a>
             </div>
             <form action="{{ url_for('register') }}" method="post" autocomplete="off">
                 <label for="username">

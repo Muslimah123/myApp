@@ -191,20 +191,6 @@ body {
     left: -12px;
   }
   
-  /* footer {
-    background: #00106a;
-    margin: 32px 0 0px;
-    padding: 32px 0;
-  }
-  footer ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  footer ul li {
-    color: #ffffff;
-    margin-bottom: 16px;
-  } */
   
   #footer{
     background: linear-gradient(to right, #002f62, #003976);

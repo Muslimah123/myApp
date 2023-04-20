@@ -51,26 +51,7 @@ function sendData(blob){
 
 
 
-//   function storeVoiceData(transcription) {
-//     // Send an AJAX request to the server to store the transcription in the database
-//     const xhr = new XMLHttpRequest();
-//     xhr.open('POST', '/store-voice-data', true);
-//     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    
-//     xhr.onload = function () {
-//         if (xhr.readyState === 4 && xhr.status === 200) {
-//            const response = JSON.parse(xhr.responseText);
-//             if (response.status === 'success') {
-//                alert('Transcription stored successfully!');
-//             } else {
-//                alert('Failed to store transcription.');
-//             }
-//        }
-//     }; 
 
-//     xhr.send(`voice_transcript=${transcription}`);
-//     alert(transcription)
-// }
 
 
 // Add a click event listener to the record button
